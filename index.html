@@ -128,6 +128,11 @@
     .product-card:hover .product-arrow { opacity: 1; }
     .product-arrow:hover { background: var(--black); color: var(--white); }
 
+    /* KIT CARD */
+    .product-img--split { display: flex; }
+    .product-img--split img { width: 50%; height: 100%; object-fit: cover; }
+    .product-img--split img + img { border-left: 2px solid var(--white); }
+
     /* CACAY FEATURE */
     .cacay-feature {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -246,7 +251,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <img src="images/serum-model.png" alt="UNCMN skincare" />
+      <img src="images/cacay-oil-hands.jpg" alt="UNCMN Cacay Oil" />
       <div class="hero-overlay"></div>
       <div class="hero-badge">
         <p>Star Ingredient</p>
@@ -309,7 +314,7 @@
 
       <div class="product-card anim">
         <div class="product-img">
-          <img src="images/cacay-oil.png" alt="Pure Cacay Oil" />
+          <img src="images/cacay-oil-hands.jpg" alt="Pure Cacay Oil" />
         </div>
         <div class="product-info">
           <span class="tag">Skincare · Hero</span>
@@ -332,15 +337,16 @@
       </div>
 
       <div class="product-card anim anim-delay-2">
-        <div class="product-img" style="background:#EDE8E0; display:flex; align-items:center; justify-content:center;">
-          <img src="images/uncmn-logo.png" alt="Cacay Lip Treatment" style="width:55%; height:auto; object-fit:contain; padding:3.5rem 2.5rem;" />
+        <div class="product-img product-img--split">
+          <img src="images/cacay-oil-hands.jpg" alt="Cacay Oil — part of the Essential Kit" />
+          <img src="images/cacay-fruit-fresh.png" alt="Cacao Butter Lipstick — part of the Essential Kit" />
         </div>
         <div class="product-info">
-          <span class="tag">Lip Care · Treatment</span>
-          <h3>Cacay Lip Treatment</h3>
-          <p>Overnight repair powered by cacay oil and Vitamin E. Wake up with renewed, plump lips.</p>
+          <span class="tag">Bundle · The Full Ritual</span>
+          <h3>The Essential Kit</h3>
+          <p>Cacay Oil + Cacao Butter Lipstick. The complete UNCMN ritual — skin and lips, uncommonly nourished.</p>
         </div>
-        <a href="#" class="product-arrow" aria-label="View Lip Treatment">→</a>
+        <a href="#" class="product-arrow" aria-label="View Essential Kit">→</a>
       </div>
 
     </div>
@@ -369,7 +375,7 @@
   <!-- CACAY FEATURE -->
   <section class="cacay-feature">
     <div class="cacay-feature-img">
-      <img src="images/cacay-fruit-fresh.png" alt="Fresh cacay fruit" />
+      <img src="images/cacay-oil-hands.jpg" alt="UNCMN Cacay Oil dropper" />
     </div>
     <div class="cacay-feature-content">
       <span class="section-label anim">The Ingredient</span>
@@ -438,8 +444,7 @@
       <ul>
         <li><a href="cacay-oil.html">Cacay Oil</a></li>
         <li><a href="#">Cacao Butter Lipstick</a></li>
-        <li><a href="#">Lip Treatment</a></li>
-        <li><a href="#">Bundles</a></li>
+        <li><a href="#">Essential Kit</a></li>
       </ul>
     </div>
     <div class="footer-col">
