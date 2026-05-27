@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cacay Oil by UNCMN — The world's most potent natural skin oil. Cold-pressed, wild-harvested from the Colombian Amazon. Rich in retinol, Vitamin E, and linolenic acid." />
+  <title>Cacay Oil — UNCMN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* PAGE HERO */
+    .page-hero {
+      min-height: 100vh; padding-top: 80px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+    .page-hero-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 4rem 5rem 5rem;
+    }
+    .page-hero-content .section-label {
+      opacity: 0; transform: translateY(14px);
+      animation: fadeUp 0.8s var(--ease) 0.2s forwards;
+    }
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 5.6rem);
+      font-weight: 300; line-height: 1.04;
+      margin: 1rem 0 1.8rem;
+      opacity: 0; transform: translateY(22px);
+      animation: fadeUp 0.9s var(--ease) 0.36s forwards;
+    }
+    .page-hero-title em { font-style: italic; color: var(--gold); }
+    .page-hero-lead {
+      font-size: 1.05rem; font-weight: 300; line-height: 1.85;
+      color: var(--grey-dk); max-width: 400px; margin-bottom: 3rem;
+      opacity: 0; transform: translateY(18px);
+      animation: fadeUp 0.9s var(--ease) 0.52s forwards;
+    }
+    .page-hero-actions {
+      display: flex; gap: 1.2rem;
+      opacity: 0; transform: translateY(14px);
+      animation: fadeUp 0.9s var(--ease) 0.68s forwards;
+    }
+    .page-hero-img { position: relative; overflow: hidden; background: var(--grey); }
+    .page-hero-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      animation: heroScale 1.6s var(--ease) forwards;
+    }
+    @keyframes heroScale {
+      from { transform: scale(1.08); }
+      to   { transform: scale(1); }
+    }
+
+    /* INTRO PULL QUOTE */
+    .pull-quote {
+      padding: 6rem 5rem;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--grey-md);
+    }
+    .pull-quote blockquote {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300; font-style: italic; line-height: 1.3;
+      text-align: center; max-width: 800px; color: var(--black);
+    }
+    .pull-quote blockquote::before { content: '"'; color: var(--gold); }
+    .pull-quote blockquote::after  { content: '"'; color: var(--gold); }
+
+    /* SCIENCE SECTION */
+    .science {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+    }
+    .science-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 5rem;
+      border-right: 1px solid var(--grey-md);
+    }
+    .science-content .section-title { margin: 0.8rem 0 1.6rem; }
+    .science-content .section-body  { max-width: 420px; }
+    .science-stats {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 5rem; gap: 0;
+    }
+    .science-stat {
+      padding: 2.4rem 0; border-bottom: 1px solid var(--grey-md);
+      display: flex; align-items: flex-start; gap: 1.5rem;
+    }
+    .science-stat:last-child { border-bottom: none; }
+    .sci-num {
+      font-family: var(--font-display); font-size: 2.8rem; font-weight: 300;
+      color: var(--gold); line-height: 1; min-width: 4.5rem;
+    }
+    .sci-text strong {
+      display: block; font-family: var(--font-display); font-size: 1.15rem;
+      font-weight: 400; margin-bottom: 0.35rem;
+    }
+    .sci-text span { font-size: 0.83rem; line-height: 1.7; color: var(--grey-dk); }
+
+    /* HOW IT'S MADE */
+    .process {
+      background: var(--black); color: var(--white);
+      padding: 8rem 5rem;
+    }
+    .process-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: end; margin-bottom: 5rem;
+    }
+    .process-header .section-label { color: var(--gold-lt); }
+    .process-header .section-title { color: var(--white); margin-top: 0.8rem; }
+    .process-header p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.45); }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .process-step {
+      padding: 3rem 2.5rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .process-step:last-child { border-right: none; }
+    .step-num {
+      font-family: var(--font-display); font-size: 3rem; font-weight: 300;
+      color: rgba(255,255,255,0.12); line-height: 1; margin-bottom: 1.5rem;
+    }
+    .process-step h4 {
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 400;
+      color: var(--white); margin-bottom: 0.7rem;
+    }
+    .process-step p { font-size: 0.82rem; line-height: 1.75; color: rgba(255,255,255,0.45); }
+
+    /* HARVEST GALLERY */
+    .harvest-gallery {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr; height: 70vh; gap: 2px;
+    }
+    .harvest-gallery .gal-item { overflow: hidden; }
+    .harvest-gallery .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); }
+    .harvest-gallery .gal-item:hover img { transform: scale(1.05); }
+    .harvest-gallery .gal-item.wide { grid-column: span 2; }
+    .harvest-gallery .gal-caption {
+      background: var(--grey); display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: flex-end; padding: 2.5rem;
+    }
+    .harvest-gallery .gal-caption span {
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem; display: block;
+    }
+    .harvest-gallery .gal-caption h3 {
+      font-family: var(--font-display); font-size: 1.6rem; font-weight: 300;
+    }
+
+    /* BENEFITS */
+    .benefits { padding: 8rem 5rem; background: var(--grey); }
+    .benefits-header { max-width: 600px; margin-bottom: 5rem; }
+    .benefits-header .section-title { margin-top: 0.8rem; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+    .benefit-card {
+      background: var(--white); padding: 3rem 2.5rem;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.3s var(--ease);
+    }
+    .benefit-card:hover { border-color: var(--gold); }
+    .benefit-icon {
+      font-family: var(--font-display); font-size: 2.2rem;
+      color: var(--gold); margin-bottom: 1.2rem; display: block;
+    }
+    .benefit-card h4 {
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 400;
+      margin-bottom: 0.7rem;
+    }
+    .benefit-card p { font-size: 0.83rem; line-height: 1.78; color: var(--grey-dk); }
+
+    /* CTA STRIP */
+    .cta-strip {
+      padding: 7rem 5rem; display: flex;
+      align-items: center; justify-content: space-between; gap: 4rem;
+      border-top: 1px solid var(--grey-md);
+    }
+    .cta-strip-left .section-title { margin-top: 0.6rem; }
+    .cta-strip-right { display: flex; gap: 1rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .page-hero    { grid-template-columns: 1fr; }
+      .page-hero-content { padding: 4rem 3rem; }
+      .page-hero-img { min-height: 55vw; }
+      .pull-quote   { padding: 4rem 3rem; }
+      .science      { grid-template-columns: 1fr; }
+      .science-content, .science-stats { padding: 4rem 3rem; border: none; }
+      .process      { padding: 5rem 3rem; }
+      .process-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .harvest-gallery { grid-template-columns: 1fr 1fr; height: auto; }
+      .harvest-gallery .gal-item { aspect-ratio: 1; }
+      .harvest-gallery .gal-item.wide { grid-column: span 2; aspect-ratio: 2; }
+      .benefits     { padding: 5rem 3rem; }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .cta-strip    { padding: 5rem 3rem; flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 768px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .harvest-gallery { grid-template-columns: 1fr; }
+      .harvest-gallery .gal-item.wide { grid-column: span 1; aspect-ratio: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html"><img src="images/uncmn-logo.png" alt="UNCMN" class="nav-logo" /></a>
+    <ul class="nav-links">
+      <li><a href="cacay-oil.html">Cacay Oil</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="index.html#products">Products</a></li>
+      <li><a href="about.html#values">Values</a></li>
+    </ul>
+    <a href="index.html#products" class="nav-cta">Shop</a>
+    <button class="nav-hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="cacay-oil.html">Cacay Oil</a>
+    <a href="about.html">Our Story</a>
+    <a href="index.html#products">Products</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero page-top">
+    <div class="page-hero-content">
+      <span class="section-label">The Star Ingredient</span>
+      <h1 class="page-hero-title">
+        Nature's most<br><em>potent</em><br>skin oil.
+      </h1>
+      <p class="page-hero-lead">
+        Cacay oil has been hidden in Colombia's Amazon basin for centuries.
+        Three times richer in Vitamin E than argan oil. Twice the retinol of rosehip.
+        Absorbed instantly. No residue. No compromise.
+      </p>
+      <div class="page-hero-actions">
+        <a href="index.html#products" class="btn-primary">Shop Cacay Oil</a>
+        <a href="#science" class="btn-ghost">The science</a>
+      </div>
+    </div>
+    <div class="page-hero-img">
+      <img src="images/cacay-fruit-fresh.png" alt="Fresh cacay fruit from Colombia" />
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <blockquote class="anim">
+      The rarest, most potent natural skin oil on earth — wild, pure, and entirely from Colombia.
+    </blockquote>
+  </div>
+
+  <!-- SCIENCE -->
+  <section class="science" id="science">
+    <div class="science-content">
+      <span class="section-label anim">The Science</span>
+      <h2 class="section-title anim anim-delay-1">
+        Remarkable<br><em>by nature.</em>
+      </h2>
+      <p class="section-body anim anim-delay-2">
+        Cacay oil (from the <em>Caryodendron orinocense</em> tree) is the most
+        nutrient-dense natural skin oil identified to date. Its unique fatty acid
+        profile — dominated by linolenic acid — allows it to penetrate deeply
+        without heaviness, delivering its extraordinary cargo exactly where the
+        skin needs it most.
+        <br /><br />
+        Dermatological studies consistently place it ahead of retinol serums,
+        argan oil, rosehip oil, and vitamin C serums in independently measured
+        skin renewal metrics.
+      </p>
+    </div>
+    <div class="science-stats">
+      <div class="science-stat anim">
+        <div class="sci-num">73%</div>
+        <div class="sci-text">
+          <strong>Linolenic Acid</strong>
+          <span>The highest concentration of this essential fatty acid in any known plant oil. Essential for skin barrier repair and deep hydration.</span>
+        </div>
+      </div>
+      <div class="science-stat anim anim-delay-1">
+        <div class="sci-num">3×</div>
+        <div class="sci-text">
+          <strong>More Vitamin E than Argan</strong>
+          <span>Tocopherols neutralise free radicals, prevent oxidative damage, and slow visible ageing — at three times the concentration of argan oil.</span>
+        </div>
+      </div>
+      <div class="science-stat anim anim-delay-2">
+        <div class="sci-num">2×</div>
+        <div class="sci-text">
+          <strong>More Retinol than Rosehip</strong>
+          <span>Natural retinol drives collagen production, accelerates cell turnover, and smooths fine lines — without the irritation of synthetic retinoids.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="process-header">
+      <div>
+        <span class="section-label anim">How It's Made</span>
+        <h2 class="section-title anim anim-delay-1">
+          From wild tree<br><em>to glass bottle.</em>
+        </h2>
+      </div>
+      <p class="anim anim-delay-2">
+        Every step of the cacay oil journey is documented, verified, and shared
+        with you. We call this full traceability — and it begins in the Colombian
+        jungle.
+      </p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step anim">
+        <div class="step-num">01</div>
+        <h4>Wild Harvest</h4>
+        <p>Nuts are hand-harvested from wild cacay trees by local community pickers in the Colombian Amazon — no plantations, no monoculture.</p>
+      </div>
+      <div class="process-step anim anim-delay-1">
+        <div class="step-num">02</div>
+        <h4>Sun-Dried</h4>
+        <p>Harvested nuts are naturally sun-dried for 7–10 days to reduce moisture and concentrate the oil content before pressing.</p>
+      </div>
+      <div class="process-step anim anim-delay-2">
+        <div class="step-num">03</div>
+        <h4>Cold-Pressed</h4>
+        <p>Low-temperature pressing preserves every molecule of retinol, Vitamin E, and linolenic acid — nothing lost to heat, nothing added.</p>
+      </div>
+      <div class="process-step anim anim-delay-3">
+        <div class="step-num">04</div>
+        <h4>Unrefined</h4>
+        <p>Zero refining, zero bleaching, zero deodorising. What reaches your hands is exactly what came from the tree — pure, intact, alive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HARVEST GALLERY -->
+  <div class="harvest-gallery">
+    <div class="gal-item wide">
+      <img src="images/cacay-harvest.png" alt="Cacay harvest Colombia" />
+    </div>
+    <div class="gal-caption">
+      <span>Origin</span>
+      <h3>Wild forests of Colombia</h3>
+    </div>
+    <div class="gal-item">
+      <img src="images/cacay-fruit-fresh.png" alt="Fresh cacay fruit" />
+    </div>
+    <div class="gal-item">
+      <img src="images/cacay-oil.png" alt="Cacay oil" />
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <div class="benefits-header">
+      <span class="section-label anim">Skin Benefits</span>
+      <h2 class="section-title anim anim-delay-1">
+        What it does<br><em>for your skin.</em>
+      </h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card anim">
+        <span class="benefit-icon">◈</span>
+        <h4>Deep Regeneration</h4>
+        <p>Natural retinol accelerates cell renewal and collagen synthesis. Visible improvement in skin texture from the first weeks of use.</p>
+      </div>
+      <div class="benefit-card anim anim-delay-1">
+        <span class="benefit-icon">◈</span>
+        <h4>Barrier Repair</h4>
+        <p>High linolenic acid concentration rebuilds the skin's protective lipid barrier, reducing water loss and improving resilience over time.</p>
+      </div>
+      <div class="benefit-card anim anim-delay-2">
+        <span class="benefit-icon">◈</span>
+        <h4>Anti-Oxidant Shield</h4>
+        <p>Vitamin E concentration three times that of argan oil neutralises free radicals and prevents the oxidative damage that accelerates ageing.</p>
+      </div>
+      <div class="benefit-card anim anim-delay-1">
+        <span class="benefit-icon">◈</span>
+        <h4>Zero Residue Absorption</h4>
+        <p>Unique molecular structure allows complete skin absorption within seconds. No greasy film, no blocked pores — suitable for all skin types.</p>
+      </div>
+      <div class="benefit-card anim anim-delay-2">
+        <span class="benefit-icon">◈</span>
+        <h4>Fine Line Reduction</h4>
+        <p>Consistent use reduces the visible depth of fine lines and expression lines. Backed by independent studies on natural retinol performance.</p>
+      </div>
+      <div class="benefit-card anim anim-delay-3">
+        <span class="benefit-icon">◈</span>
+        <h4>Even Skin Tone</h4>
+        <p>Accelerated cellular turnover gradually evens pigmentation and post-inflammatory marks — gently and without irritation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="cta-strip-left">
+      <span class="section-label anim">Ready?</span>
+      <h2 class="section-title anim anim-delay-1">
+        Experience<br><em>uncommon</em> skin.
+      </h2>
+    </div>
+    <div class="cta-strip-right anim anim-delay-2">
+      <a href="index.html#products" class="btn-primary">Shop Cacay Oil</a>
+      <a href="about.html" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="newsletter-left">
+      <span class="section-label">Stay Rare</span>
+      <h2 class="section-title">The UNCMN<br><em>edit.</em></h2>
+      <p>New drops, ingredient stories, field dispatches from Colombia. No noise — only what matters.</p>
+    </div>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email address" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <img src="images/uncmn-logo.png" alt="UNCMN" />
+      <p>Colombian cacay oil, cacao butter, and natural lip care. Built by people from the land.</p>
+      <div class="footer-social">
+        <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+        <a href="#" class="social-icon" aria-label="TikTok">TK</a>
+        <a href="#" class="social-icon" aria-label="Pinterest">PT</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Products</h5>
+      <ul>
+        <li><a href="cacay-oil.html">Cacay Oil</a></li>
+        <li><a href="#">Cacao Butter Lipstick</a></li>
+        <li><a href="#">Lip Treatment</a></li>
+        <li><a href="#">Bundles</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Brand</h5>
+      <ul>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="about.html#traceability">Traceability</a></li>
+        <li><a href="cacay-oil.html">Cacay Oil</a></li>
+        <li><a href="about.html#values">Values</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2025 UNCMN. All rights reserved.</p>
+    <span class="slogan">From Soil to Skin. Nothing in Between.</span>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
