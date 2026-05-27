@@ -97,39 +97,50 @@
       display: flex; justify-content: space-between; align-items: flex-end;
       margin-bottom: 4rem;
     }
-    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .products-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; }
     .product-card {
       background: var(--grey); overflow: hidden; position: relative;
-      transition: transform 0.4s var(--ease);
+      transition: transform 0.4s var(--ease); grid-column: span 2;
     }
     .product-card:hover { z-index: 2; transform: scale(1.015); }
+    .product-card--kit { grid-column: span 3; }
     .product-img { aspect-ratio: 3/4; overflow: hidden; background: var(--grey-md); }
     .product-img img {
       width: 100%; height: 100%; object-fit: cover;
       transition: transform 0.7s var(--ease);
     }
     .product-card:hover .product-img img { transform: scale(1.06); }
-    .product-info { padding: 2rem; }
+    .product-info { padding: 2rem 2rem 0; }
     .product-info .tag {
       font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--gold); font-weight: 500; margin-bottom: 0.5rem; display: block;
     }
     .product-info h3 {
       font-family: var(--font-display); font-size: 1.5rem; font-weight: 300;
-      line-height: 1.15; margin-bottom: 0.6rem;
+      line-height: 1.15; margin-bottom: 0.4rem;
+    }
+    .product-size {
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--grey-dk); display: block; margin-bottom: 0.5rem;
     }
     .product-info p { font-size: 0.82rem; color: var(--grey-dk); line-height: 1.72; }
-    .product-arrow {
-      position: absolute; top: 1.2rem; right: 1.2rem;
-      width: 36px; height: 36px; border: 1px solid var(--black);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; opacity: 0;
-      transition: opacity 0.3s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease);
+    .product-price {
+      font-family: var(--font-display); font-size: 1.6rem; font-weight: 300;
+      color: var(--black); margin-top: 0.9rem;
     }
-    .product-card:hover .product-arrow { opacity: 1; }
-    .product-arrow:hover { background: var(--black); color: var(--white); }
+    .product-price span {
+      font-family: 'DM Sans', sans-serif; font-size: 0.72rem;
+      color: var(--grey-dk); font-weight: 300;
+    }
+    .product-buy {
+      display: block; margin: 1.5rem 2rem 2rem; padding: 0.85rem;
+      text-align: center; background: var(--black); color: var(--white);
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      transition: background 0.25s var(--ease);
+    }
+    .product-buy:hover { background: var(--gold); }
 
-    /* KIT CARD */
+    /* KIT IMAGE SPLIT */
     .product-img--split { display: flex; }
     .product-img--split img { width: 50%; height: 100%; object-fit: cover; }
     .product-img--split img + img { border-left: 2px solid var(--white); }
@@ -193,7 +204,9 @@
       .about-strip        { grid-template-columns: 1fr; }
       .about-strip-content{ padding: 4rem 3rem; }
       .products           { padding: 5rem 3rem; }
-      .products-grid      { grid-template-columns: 1fr 1fr; }
+      .products-grid      { grid-template-columns: repeat(4, 1fr); }
+      .product-card       { grid-column: span 2; }
+      .product-card--kit  { grid-column: span 2; }
       .cacay-feature      { grid-template-columns: 1fr; }
       .cacay-feature-img  { min-height: 50vw; }
       .cacay-feature-content { padding: 5rem 3rem; }
@@ -203,6 +216,7 @@
     @media (max-width: 768px) {
       .products      { padding: 4rem 1.5rem; }
       .products-grid { grid-template-columns: 1fr; }
+      .product-card, .product-card--kit { grid-column: span 1; }
       .products-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
       .values-strip  { padding: 4rem 1.5rem; }
     }
@@ -275,39 +289,74 @@
 
       <div class="product-card anim">
         <div class="product-img">
-          <img src="images/cacay_oil.png" alt="Pure Cacay Oil" />
+          <img src="images/cacay_oil.png" alt="Pure Cacay Oil 30ml" />
         </div>
         <div class="product-info">
           <span class="tag">Skincare · Hero</span>
           <h3>Pure Cacay Oil</h3>
+          <span class="product-size">30 ml</span>
           <p>Cold-pressed, unrefined. The most potent natural oil for skin regeneration — direct from Colombian forests.</p>
+          <div class="product-price">€11.11 <span>+ shipping</span></div>
         </div>
-        <a href="cacay-oil.html" class="product-arrow" aria-label="View Cacay Oil">→</a>
+        <a href="https://www.paypal.com/instantcommerce/checkout/46G6NBAXXW9HQ" class="product-buy" target="_blank" rel="noopener">Buy Now</a>
       </div>
 
       <div class="product-card anim anim-delay-1">
+        <div class="product-img">
+          <img src="images/cacay_oil.png" alt="Pure Cacay Oil 50ml" />
+        </div>
+        <div class="product-info">
+          <span class="tag">Skincare · Hero</span>
+          <h3>Pure Cacay Oil</h3>
+          <span class="product-size">50 ml</span>
+          <p>Cold-pressed, unrefined. The most potent natural oil for skin regeneration — direct from Colombian forests.</p>
+          <div class="product-price">€16.70 <span>+ shipping</span></div>
+        </div>
+        <a href="https://www.paypal.com/instantcommerce/checkout/BZKFG46BFGQLU" class="product-buy" target="_blank" rel="noopener">Buy Now</a>
+      </div>
+
+      <div class="product-card anim anim-delay-2">
         <div class="product-img">
           <img src="images/cacay-fruit-fresh.png" alt="Cacao Butter Lipstick" />
         </div>
         <div class="product-info">
           <span class="tag">Lip Care · Bestseller</span>
           <h3>Cacao Butter Lipstick</h3>
+          <span class="product-size">&nbsp;</span>
           <p>Nourishing colour and care in one. Colombian cacao butter with clean, natural pigment.</p>
+          <div class="product-price">€4.00 <span>+ shipping</span></div>
         </div>
-        <a href="#" class="product-arrow" aria-label="View Lipstick">→</a>
+        <a href="https://www.paypal.com/instantcommerce/checkout/AYQ64DPG8Y7TE" class="product-buy" target="_blank" rel="noopener">Buy Now</a>
       </div>
 
-      <div class="product-card anim anim-delay-2">
+      <div class="product-card product-card--kit anim">
         <div class="product-img product-img--split">
-          <img src="images/cacay_oil.png" alt="Cacay Oil — part of the Essential Kit" />
-          <img src="images/cacay-fruit-fresh.png" alt="Cacao Butter Lipstick — part of the Essential Kit" />
+          <img src="images/cacay_oil.png" alt="Cacay Oil 30ml — Essential Kit" />
+          <img src="images/cacay-fruit-fresh.png" alt="Cacao Butter Lipstick — Essential Kit" />
         </div>
         <div class="product-info">
           <span class="tag">Bundle · The Full Ritual</span>
           <h3>The Essential Kit</h3>
+          <span class="product-size">30 ml oil + lipstick</span>
           <p>Cacay Oil + Cacao Butter Lipstick. The complete UNCMN ritual — skin and lips, uncommonly nourished.</p>
+          <div class="product-price">€14.50 <span>+ shipping</span></div>
         </div>
-        <a href="#" class="product-arrow" aria-label="View Essential Kit">→</a>
+        <a href="https://www.paypal.com/instantcommerce/checkout/W525VACLCEBGS" class="product-buy" target="_blank" rel="noopener">Buy Now</a>
+      </div>
+
+      <div class="product-card product-card--kit anim anim-delay-1">
+        <div class="product-img product-img--split">
+          <img src="images/cacay_oil.png" alt="Cacay Oil 50ml — Essential Kit" />
+          <img src="images/cacay-fruit-fresh.png" alt="Cacao Butter Lipstick — Essential Kit" />
+        </div>
+        <div class="product-info">
+          <span class="tag">Bundle · The Full Ritual</span>
+          <h3>The Essential Kit</h3>
+          <span class="product-size">50 ml oil + lipstick</span>
+          <p>Cacay Oil + Cacao Butter Lipstick. The complete UNCMN ritual — skin and lips, uncommonly nourished.</p>
+          <div class="product-price">€19.50 <span>+ shipping</span></div>
+        </div>
+        <a href="https://www.paypal.com/instantcommerce/checkout/TMQH9C8QSJ97Q" class="product-buy" target="_blank" rel="noopener">Buy Now</a>
       </div>
 
     </div>
