@@ -196,7 +196,7 @@ nav.scrolled {
    NEWSLETTER
 ══════════════════════════════════════════════════ */
 .newsletter {
-  padding: 7rem; background: var(--black); color: var(--white);
+  padding: 5rem 5rem; background: var(--black); color: var(--white);
   display: flex; align-items: center; justify-content: space-between; gap: 4rem;
 }
 .newsletter-left .section-label { color: var(--gold-lt); }
