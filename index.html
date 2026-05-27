@@ -91,19 +91,38 @@
     }
     .origin-tag::before { content: '🇨🇴'; }
 
-    /* PRODUCTS */
+    /* PRODUCTS CAROUSEL */
     .products { padding: 7rem 5rem; }
     .products-header {
-      display: flex; justify-content: space-between; align-items: flex-end;
-      margin-bottom: 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 2.5rem;
     }
-    .products-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; }
+    .products-header-right { display: flex; align-items: center; gap: 1rem; }
+    .carousel-controls { display: flex; gap: 0.4rem; }
+    .carousel-btn {
+      width: 40px; height: 40px; border: 1px solid var(--black); background: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; cursor: pointer;
+      transition: background 0.25s var(--ease), color 0.25s var(--ease);
+    }
+    .carousel-btn:hover { background: var(--black); color: var(--white); }
+    .carousel-btn:disabled { opacity: 0.25; pointer-events: none; }
+    .view-all-btn { cursor: pointer; background: none; }
+    .carousel-viewport { overflow: hidden; }
+    .products-grid {
+      display: flex; gap: 2px;
+      transition: transform 0.5s var(--ease);
+    }
+    .products-grid.show-all {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      transform: none !important;
+    }
     .product-card {
+      flex: 0 0 calc(33.333% - 1.5px);
       background: var(--grey); overflow: hidden; position: relative;
-      transition: transform 0.4s var(--ease); grid-column: span 2;
+      transition: transform 0.4s var(--ease);
     }
     .product-card:hover { z-index: 2; transform: scale(1.015); }
-    .product-card--kit { grid-column: span 3; }
     .product-img { aspect-ratio: 3/4; overflow: hidden; background: var(--grey-md); }
     .product-img img {
       width: 100%; height: 100%; object-fit: cover;
@@ -170,7 +189,12 @@
 
     /* VALUES STRIP */
     .values-strip { padding: 7rem 5rem; background: var(--grey); }
-    .values-strip-header { margin-bottom: 4rem; }
+    .values-strip-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center; margin-bottom: 4rem;
+    }
+    .values-header-img { overflow: hidden; height: 320px; }
+    .values-header-img img { width: 100%; height: 100%; object-fit: cover; }
     .values-strip-header .section-title { margin-top: 0.5rem; }
     .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
     .value-card {
@@ -203,22 +227,23 @@
       .hero-right         { min-height: 55vw; }
       .about-strip        { grid-template-columns: 1fr; }
       .about-strip-content{ padding: 4rem 3rem; }
-      .products           { padding: 5rem 3rem; }
-      .products-grid      { grid-template-columns: repeat(4, 1fr); }
-      .product-card       { grid-column: span 2; }
-      .product-card--kit  { grid-column: span 2; }
-      .cacay-feature      { grid-template-columns: 1fr; }
-      .cacay-feature-img  { min-height: 50vw; }
-      .cacay-feature-content { padding: 5rem 3rem; }
-      .values-strip       { padding: 5rem 3rem; }
-      .values-grid        { grid-template-columns: 1fr; }
+      .products                { padding: 5rem 3rem; }
+      .product-card            { flex: 0 0 calc(50% - 1px); }
+      .products-grid.show-all  { grid-template-columns: 1fr 1fr; }
+      .cacay-feature           { grid-template-columns: 1fr; }
+      .cacay-feature-img       { min-height: 50vw; }
+      .cacay-feature-content   { padding: 5rem 3rem; }
+      .values-strip            { padding: 5rem 3rem; }
+      .values-strip-header     { grid-template-columns: 1fr; gap: 2rem; }
+      .values-grid             { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
-      .products      { padding: 4rem 1.5rem; }
-      .products-grid { grid-template-columns: 1fr; }
-      .product-card, .product-card--kit { grid-column: span 1; }
-      .products-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .values-strip  { padding: 4rem 1.5rem; }
+      .products                { padding: 4rem 1.5rem; }
+      .product-card            { flex: 0 0 100%; }
+      .products-grid.show-all  { grid-template-columns: 1fr; }
+      .products-header         { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .products-header-right   { width: 100%; justify-content: space-between; }
+      .values-strip            { padding: 4rem 1.5rem; }
     }
   </style>
 </head>
@@ -283,9 +308,16 @@
         <span class="section-label anim">The Collection</span>
         <h2 class="section-title anim anim-delay-1">Uncommonly <em>pure.</em></h2>
       </div>
-      <a href="#products" class="btn-ghost anim anim-delay-2">View all</a>
+      <div class="products-header-right anim anim-delay-2">
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carouselPrev" aria-label="Previous product" disabled>←</button>
+          <button class="carousel-btn" id="carouselNext" aria-label="Next product">→</button>
+        </div>
+        <button class="btn-ghost view-all-btn" id="viewAllBtn">View all</button>
+      </div>
     </div>
-    <div class="products-grid">
+    <div class="carousel-viewport">
+    <div class="products-grid" id="productsGrid">
 
       <div class="product-card anim">
         <div class="product-img">
@@ -358,6 +390,7 @@
       </div>
 
     </div>
+    </div><!-- /.carousel-viewport -->
   </section>
 
   <!-- MARQUEE -->
@@ -441,8 +474,13 @@
   <!-- VALUES -->
   <section class="values-strip" id="values">
     <div class="values-strip-header">
-      <span class="section-label anim">What We Stand For</span>
-      <h2 class="section-title anim anim-delay-1">Uncommon <em>principles.</em></h2>
+      <div class="values-header-text">
+        <span class="section-label anim">What We Stand For</span>
+        <h2 class="section-title anim anim-delay-1">Uncommon <em>principles.</em></h2>
+      </div>
+      <div class="values-header-img anim anim-delay-1">
+        <img src="images/cacayseed.jpg" alt="Cacay seed" />
+      </div>
     </div>
     <div class="values-grid">
       <div class="value-card anim">

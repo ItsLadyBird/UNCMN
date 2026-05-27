@@ -55,6 +55,66 @@ document.addEventListener('DOMContentLoaded', () => {
     animEls.forEach(el => observer.observe(el));
   }
 
+  // ── PRODUCT CAROUSEL ──────────────────────────────
+  const productsGrid = document.getElementById('productsGrid');
+  if (productsGrid) {
+    const cards      = productsGrid.querySelectorAll('.product-card');
+    const prevBtn    = document.getElementById('carouselPrev');
+    const nextBtn    = document.getElementById('carouselNext');
+    const viewAllBtn = document.getElementById('viewAllBtn');
+    let index    = 0;
+    let showAll  = false;
+
+    function visibleCount() {
+      if (window.innerWidth <= 768)  return 1;
+      if (window.innerWidth <= 1100) return 2;
+      return 3;
+    }
+
+    function syncButtons() {
+      prevBtn.disabled = index <= 0;
+      nextBtn.disabled = index >= cards.length - visibleCount();
+    }
+
+    function move() {
+      if (showAll) return;
+      const w = cards[0].offsetWidth + 2;
+      productsGrid.style.transform = `translateX(-${index * w}px)`;
+      syncButtons();
+    }
+
+    prevBtn.addEventListener('click', () => { index = Math.max(0, index - 1); move(); });
+    nextBtn.addEventListener('click', () => {
+      index = Math.min(cards.length - visibleCount(), index + 1); move();
+    });
+
+    viewAllBtn.addEventListener('click', () => {
+      showAll = !showAll;
+      productsGrid.classList.toggle('show-all', showAll);
+      if (showAll) {
+        productsGrid.style.transform = 'none';
+        prevBtn.style.visibility = 'hidden';
+        nextBtn.style.visibility = 'hidden';
+        viewAllBtn.textContent = 'View less';
+      } else {
+        prevBtn.style.visibility = '';
+        nextBtn.style.visibility = '';
+        viewAllBtn.textContent = 'View all';
+        index = 0;
+        move();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (!showAll) {
+        index = Math.min(index, Math.max(0, cards.length - visibleCount()));
+        move();
+      }
+    });
+
+    syncButtons();
+  }
+
   // ── NEWSLETTER FORM ───────────────────────────────
   const forms = document.querySelectorAll('.newsletter-form');
   forms.forEach(form => {
