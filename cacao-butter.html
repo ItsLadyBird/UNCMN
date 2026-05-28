@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cacao Butter Lipstick by UNCMN — Colombian cacao butter, cold-pressed from Theobroma cacao seeds. Pure, potent, and botanically alive. The richest natural emollient on earth." />
+  <title>Cacao Butter Lipstick — UNCMN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* PAGE HERO */
+    .page-hero {
+      min-height: 100vh; padding-top: 80px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+    .page-hero-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 4rem 5rem 5rem;
+    }
+    .page-hero-content .section-label {
+      opacity: 0; transform: translateY(14px);
+      animation: fadeUp 0.8s var(--ease) 0.2s forwards;
+    }
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 5.6rem);
+      font-weight: 300; line-height: 1.04;
+      margin: 1rem 0 1.8rem;
+      opacity: 0; transform: translateY(22px);
+      animation: fadeUp 0.9s var(--ease) 0.36s forwards;
+    }
+    .page-hero-title em { font-style: italic; color: var(--gold); }
+    .page-hero-lead {
+      font-size: 1.05rem; font-weight: 300; line-height: 1.85;
+      color: var(--grey-dk); max-width: 400px; margin-bottom: 3rem;
+      opacity: 0; transform: translateY(18px);
+      animation: fadeUp 0.9s var(--ease) 0.52s forwards;
+    }
+    .page-hero-actions {
+      display: flex; gap: 1.2rem;
+      opacity: 0; transform: translateY(14px);
+      animation: fadeUp 0.9s var(--ease) 0.68s forwards;
+    }
+    .page-hero-img { position: relative; overflow: hidden; background: var(--grey); }
+    .page-hero-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      animation: heroScale 1.6s var(--ease) forwards;
+    }
+    @keyframes heroScale {
+      from { transform: scale(1.08); }
+      to   { transform: scale(1); }
+    }
+
+    /* INTRO PULL QUOTE */
+    .pull-quote {
+      padding: 6rem 5rem;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--grey-md);
+    }
+    .pull-quote blockquote {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300; font-style: italic; line-height: 1.3;
+      text-align: center; max-width: 800px; color: var(--black);
+    }
+    .pull-quote blockquote::before { content: '\201C'; color: var(--gold); }
+    .pull-quote blockquote::after  { content: '\201D'; color: var(--gold); }
+
+    /* SCIENCE SECTION */
+    .science {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+    }
+    .science-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 5rem;
+      border-right: 1px solid var(--grey-md);
+    }
+    .science-content .section-title { margin: 0.8rem 0 1.6rem; }
+    .science-content .section-body  { max-width: 420px; }
+    .science-stats {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 5rem; gap: 0;
+    }
+    .science-stat {
+      padding: 2.4rem 0; border-bottom: 1px solid var(--grey-md);
+      display: flex; align-items: flex-start; gap: 1.5rem;
+    }
+    .science-stat:last-child { border-bottom: none; }
+    .sci-num {
+      font-family: var(--font-display); font-size: 2.8rem; font-weight: 300;
+      color: var(--gold); line-height: 1; min-width: 4.5rem;
+    }
+    .sci-text strong {
+      display: block; font-family: var(--font-display); font-size: 1.15rem;
+      font-weight: 400; margin-bottom: 0.35rem;
+    }
+    .sci-text span { font-size: 0.83rem; line-height: 1.7; color: var(--grey-dk); }
+
+    /* THE TRUTH — COMPARISON */
+    .truth-section {
+      background: var(--black); color: var(--white);
+      padding: 8rem 5rem;
+    }
+    .truth-header {
+      max-width: 660px; margin-bottom: 5rem;
+    }
+    .truth-header .section-label { color: var(--gold-lt); }
+    .truth-header .section-title { color: var(--white); margin: 0.8rem 0 1.4rem; }
+    .truth-header p {
+      font-size: 0.9rem; line-height: 1.85;
+      color: rgba(255,255,255,0.45);
+    }
+    .truth-table {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    }
+    .truth-col-head {
+      padding: 1.8rem 2.5rem;
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 400;
+    }
+    .truth-col-head.cacao { background: var(--gold); color: var(--white); }
+    .truth-col-head.petro { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.4); }
+    .truth-cell {
+      padding: 1.4rem 2.5rem; font-size: 0.83rem; line-height: 1.72;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .truth-cell.cacao { background: rgba(196,154,42,0.08); color: rgba(255,255,255,0.85); }
+    .truth-cell.petro { background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.35); }
+
+    /* HOW IT'S MADE */
+    .process {
+      background: var(--black); color: var(--white);
+      padding: 8rem 5rem;
+    }
+    .process-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: end; margin-bottom: 5rem;
+    }
+    .process-header .section-label { color: var(--gold-lt); }
+    .process-header .section-title { color: var(--white); margin-top: 0.8rem; }
+    .process-header p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.45); }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .process-step {
+      padding: 3rem 2.5rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .process-step:last-child { border-right: none; }
+    .step-num {
+      font-family: var(--font-display); font-size: 3rem; font-weight: 300;
+      color: rgba(255,255,255,0.12); line-height: 1; margin-bottom: 1.5rem;
+    }
+    .process-step h4 {
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 400;
+      color: var(--white); margin-bottom: 0.7rem;
+    }
+    .process-step p { font-size: 0.82rem; line-height: 1.75; color: rgba(255,255,255,0.45); }
+
+    /* HARVEST GALLERY */
+    .harvest-gallery {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr; height: 70vh; gap: 2px;
+    }
+    .harvest-gallery .gal-item { overflow: hidden; }
+    .harvest-gallery .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); }
+    .harvest-gallery .gal-item:hover img { transform: scale(1.05); }
+    .harvest-gallery .gal-item.wide { grid-column: span 2; }
+    .harvest-gallery .gal-caption {
+      background: var(--grey); display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: flex-end; padding: 2.5rem;
+    }
+    .harvest-gallery .gal-caption span {
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem; display: block;
+    }
+    .harvest-gallery .gal-caption h3 {
+      font-family: var(--font-display); font-size: 1.6rem; font-weight: 300;
+    }
+
+    /* BENEFITS */
+    .benefits { padding: 8rem 5rem; background: var(--grey); }
+    .benefits-header { max-width: 600px; margin-bottom: 5rem; }
+    .benefits-header .section-title { margin-top: 0.8rem; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+    .benefit-card {
+      background: var(--white); padding: 3rem 2.5rem;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.3s var(--ease);
+    }
+    .benefit-card:hover { border-color: var(--gold); }
+    .benefit-icon {
+      font-family: var(--font-display); font-size: 2.2rem;
+      color: var(--gold); margin-bottom: 1.2rem; display: block;
+    }
+    .benefit-card h4 {
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 400;
+      margin-bottom: 0.7rem;
+    }
+    .benefit-card p { font-size: 0.83rem; line-height: 1.78; color: var(--grey-dk); }
+
+    /* CTA STRIP */
+    .cta-strip {
+      padding: 7rem 5rem; display: flex;
+      align-items: center; justify-content: space-between; gap: 4rem;
+      border-top: 1px solid var(--grey-md);
+    }
+    .cta-strip-left .section-title { margin-top: 0.6rem; }
+    .cta-strip-right { display: flex; gap: 1rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .page-hero    { grid-template-columns: 1fr; }
+      .page-hero-content { padding: 4rem 3rem; }
+      .page-hero-img { min-height: 55vw; }
+      .pull-quote   { padding: 4rem 3rem; }
+      .science      { grid-template-columns: 1fr; }
+      .science-content, .science-stats { padding: 4rem 3rem; border: none; }
+      .process      { padding: 5rem 3rem; }
+      .process-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .harvest-gallery { grid-template-columns: 1fr 1fr; height: auto; }
+      .harvest-gallery .gal-item { aspect-ratio: 1; }
+      .harvest-gallery .gal-item.wide { grid-column: span 2; aspect-ratio: 2; }
+      .benefits     { padding: 5rem 3rem; }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .cta-strip    { padding: 5rem 3rem; flex-direction: column; align-items: flex-start; }
+      .truth-section { padding: 5rem 3rem; }
+      .truth-header { margin-bottom: 3rem; }
+    }
+    @media (max-width: 768px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .harvest-gallery { grid-template-columns: 1fr; }
+      .harvest-gallery .gal-item.wide { grid-column: span 1; aspect-ratio: 1; }
+      .truth-section { padding: 4rem 1.5rem; }
+      .truth-table { grid-template-columns: 1fr; }
+      .truth-col-head.petro { background: rgba(255,255,255,0.04); }
+      .truth-col-head { padding: 1.4rem 1.8rem; }
+      .truth-cell { padding: 1.1rem 1.8rem; }
+      .truth-cell.cacao { border-bottom: none; }
+      .truth-cell.petro { border-top: 1px solid rgba(255,255,255,0.05); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html"><img src="images/UNCMN.png" alt="UNCMN" class="nav-logo" /></a>
+    <ul class="nav-links">
+      <li><a href="index.html#products">Products</a></li>
+      <li><a href="cacay-oil.html">Cacay Oil</a></li>
+      <li><a href="cacao-butter.html" class="active">Cacao Butter</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="about.html#values">Values</a></li>
+    </ul>
+    <a href="index.html#products" class="nav-cta">Shop</a>
+    <button class="nav-hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="index.html#products">Products</a>
+    <a href="cacay-oil.html">Cacay Oil</a>
+    <a href="cacao-butter.html">Cacao Butter</a>
+    <a href="about.html">Our Story</a>
+    <a href="about.html#values">Values</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero page-top">
+    <div class="page-hero-content">
+      <span class="section-label">The Ingredient</span>
+      <h1 class="page-hero-title">
+        Nature's most<br><em>nourishing</em><br>lip care.
+      </h1>
+      <p class="page-hero-lead">
+        Colombian cacao butter — cold-pressed from Theobroma cacao seeds. Pure, potent,
+        and botanically alive. Nothing derived from petroleum. Nothing synthetic. Just the
+        richest natural emollient on earth.
+      </p>
+      <div class="page-hero-actions">
+        <a href="index.html#products" class="btn-primary">Shop Lipstick</a>
+        <a href="#science" class="btn-ghost">The science</a>
+      </div>
+    </div>
+    <div class="page-hero-img">
+      <img src="images/cocoa-fruits-open.png" alt="Cacao pod opened revealing cacao seeds" />
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <blockquote class="anim">
+      Your lips deserve real nutrition — not a petroleum seal.
+    </blockquote>
+  </div>
+
+  <!-- SCIENCE -->
+  <section class="science" id="science">
+    <div class="science-content">
+      <span class="section-label anim">The Science</span>
+      <h2 class="section-title anim anim-delay-1">
+        Botanical<br><em>by nature.</em>
+      </h2>
+      <p class="section-body anim anim-delay-2">
+        Cacao butter (<em>Theobroma cacao</em> seed butter) is extracted by cold-pressing
+        cacao seeds — the same seeds that give us chocolate. It is one of the most stable
+        natural fats on earth, rich in polyphenols, phytosterols, and a unique fatty acid
+        profile that does something petroleum simply cannot: it penetrates the skin's lipid
+        layer and actively nourishes from within.
+        <br /><br />
+        While petroleum-based products sit on the surface as a temporary seal, cacao butter
+        integrates with your skin's biology.
+      </p>
+    </div>
+    <div class="science-stats">
+      <div class="science-stat anim">
+        <div class="sci-num">50%</div>
+        <div class="sci-text">
+          <strong>Oleic &amp; Stearic Acid</strong>
+          <span>The primary fatty acids rebuild the skin's lipid barrier, lock in moisture structurally, and keep lips supple without heaviness.</span>
+        </div>
+      </div>
+      <div class="science-stat anim anim-delay-1">
+        <div class="sci-num">3×</div>
+        <div class="sci-text">
+          <strong>More Antioxidants than Shea</strong>
+          <span>Polyphenols and flavonoids in cacao butter neutralise free radicals that cause lip ageing, chapping, and pigmentation.</span>
+        </div>
+      </div>
+      <div class="science-stat anim anim-delay-2">
+        <div class="sci-num">100%</div>
+        <div class="sci-text">
+          <strong>Botanically Derived</strong>
+          <span>Every molecule has a plant origin. No petroleum by-products, no synthetic occlusive agents, no fossil-fuel processing.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE TRUTH — COMPARISON SECTION -->
+  <section class="truth-section">
+    <div class="truth-header">
+      <span class="section-label anim">The Truth</span>
+      <h2 class="section-title anim anim-delay-1">
+        What you're<br>actually putting<br><em>on your lips.</em>
+      </h2>
+      <p class="anim anim-delay-2">
+        Most lip balms and lipsticks are built on petrolatum or mineral oil — both refined
+        petroleum derivatives. They feel like moisture, but they provide none. Here is what
+        the science actually says.
+      </p>
+    </div>
+
+    <div class="truth-table">
+      <!-- Column headers -->
+      <div class="truth-col-head cacao">Cacao Butter</div>
+      <div class="truth-col-head petro">Petroleum / Vaseline</div>
+
+      <!-- Row 1 -->
+      <div class="truth-cell cacao">Penetrates the skin's lipid layer — active nourishment</div>
+      <div class="truth-cell petro">Sits on the surface only — occlusive but not nutritive</div>
+
+      <!-- Row 2 -->
+      <div class="truth-cell cacao">Rich in oleic, stearic &amp; palmitic fatty acids</div>
+      <div class="truth-cell petro">Contains no fatty acids — zero skin nutrition</div>
+
+      <!-- Row 3 -->
+      <div class="truth-cell cacao">Polyphenols &amp; flavonoids actively protect against free radicals</div>
+      <div class="truth-cell petro">No antioxidants — zero protective activity</div>
+
+      <!-- Row 4 -->
+      <div class="truth-cell cacao">Natural phytosterols reduce inflammation and support healing</div>
+      <div class="truth-cell petro">No anti-inflammatory compounds</div>
+
+      <!-- Row 5 -->
+      <div class="truth-cell cacao">Derived from cacao seeds — renewable, biodegradable</div>
+      <div class="truth-cell petro">Derived from crude oil refining — non-renewable</div>
+
+      <!-- Row 6 -->
+      <div class="truth-cell cacao" style="border-bottom: none;">Mild, natural cacao aroma — no synthetic fragrance needed</div>
+      <div class="truth-cell petro" style="border-bottom: none;">Odourless only after heavy industrial processing</div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="process-header">
+      <div>
+        <span class="section-label anim">How It's Made</span>
+        <h2 class="section-title anim anim-delay-1">
+          From cacao<br><em>tree to lips.</em>
+        </h2>
+      </div>
+      <p class="anim anim-delay-2">
+        Every step of the cacao butter journey is traceable, intentional, and entirely
+        free from industrial shortcuts. From harvest to lipstick — nothing is hidden.
+      </p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step anim">
+        <div class="step-num">01</div>
+        <h4>Harvest</h4>
+        <p>Cacao pods are harvested by hand from Theobroma cacao trees grown in Colombia's fertile lowlands. Each pod contains 20–50 seeds.</p>
+      </div>
+      <div class="process-step anim anim-delay-1">
+        <div class="step-num">02</div>
+        <h4>Ferment &amp; Dry</h4>
+        <p>Seeds are naturally fermented for 5–7 days — developing aroma and bioavailability of nutrients — then sun-dried to reduce moisture.</p>
+      </div>
+      <div class="process-step anim anim-delay-2">
+        <div class="step-num">03</div>
+        <h4>Cold-Pressed</h4>
+        <p>Seeds are pressed at low temperature to extract pure cacao butter. No solvents. No refining. Every fatty acid and polyphenol preserved intact.</p>
+      </div>
+      <div class="process-step anim anim-delay-3">
+        <div class="step-num">04</div>
+        <h4>Blended &amp; Set</h4>
+        <p>Cacao butter is blended with our clean colour formula and set into the lipstick format — nothing else added.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <div class="harvest-gallery">
+    <div class="gal-item wide">
+      <img src="images/Colombia cacao and indigenous kogui.jpg" alt="Indigenous Kogui harvester picking cacao in Colombia" />
+    </div>
+    <div class="gal-caption">
+      <span>Origin</span>
+      <h3>Cacao farms of Colombia</h3>
+    </div>
+    <div class="gal-item">
+      <img src="images/cacao_fruit.jpeg" alt="Colorful cacao pods" />
+    </div>
+    <div class="gal-item">
+      <img src="images/cacao beans.webp" alt="Roasted cacao beans" />
+    </div>
+    <div class="gal-item">
+      <img src="images/cocoa_butter.webp" alt="Cacao butter texture" />
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <div class="benefits-header">
+      <span class="section-label anim">Lip Benefits</span>
+      <h2 class="section-title anim anim-delay-1">
+        What it does<br><em>for your lips.</em>
+      </h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card anim">
+        <span class="benefit-icon">◈</span>
+        <h4>Deep Nourishment</h4>
+        <p>Fatty acids penetrate the lip's thin skin and rebuild the lipid barrier from within — not just a surface coat.</p>
+      </div>
+      <div class="benefit-card anim anim-delay-1">
+        <span class="benefit-icon">◈</span>
+        <h4>Long-Lasting Moisture</h4>
+        <p>Stearic acid forms a breathable moisture seal that lasts hours without reapplication. No petroleum needed.</p>
+      </div>
+      <div class="benefit-card anim anim-delay-2">
+        <span class="benefit-icon">◈</span>
+        <h4>Antioxidant Protection</h4>
+        <p>Polyphenols protect against UV-induced oxidation and environmental stress that causes lips to thin and darken over time.</p>
+      </div>
+      <div class="benefit-card anim anim-delay-1">
+        <span class="benefit-icon">◈</span>
+        <h4>Anti-Inflammatory</h4>
+        <p>Theobromine and natural plant sterols reduce redness, irritation, and chapping — especially in dry or cold climates.</p>
+      </div>
+      <div class="benefit-card anim anim-delay-2">
+        <span class="benefit-icon">◈</span>
+        <h4>Natural Colour</h4>
+        <p>Cacao butter carries clean natural pigment beautifully, with no need for synthetic dye binders or petroleum carriers.</p>
+      </div>
+      <div class="benefit-card anim anim-delay-3">
+        <span class="benefit-icon">◈</span>
+        <h4>Zero Toxins</h4>
+        <p>No petrolatum, no mineral oil, no parabens, no synthetic fragrance. What you put on your lips, you absorb — it matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="cta-strip-left">
+      <span class="section-label anim">Ready?</span>
+      <h2 class="section-title anim anim-delay-1">
+        Lips that<br><em>truly</em> flourish.
+      </h2>
+    </div>
+    <div class="cta-strip-right anim anim-delay-2">
+      <a href="index.html#products" class="btn-primary">Shop Lipstick</a>
+      <a href="about.html" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="newsletter-left">
+      <span class="section-label">Stay Rare</span>
+      <h2 class="section-title">The UNCMN <em>edit.</em></h2>
+      <p>New drops, ingredient stories, field dispatches from Colombia. No noise — only what matters.</p>
+    </div>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email address" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <img src="images/UNCMN.png" alt="UNCMN" />
+      <p>Colombian cacay oil, cacao butter, and natural lip care. Built by people from the land.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Products</h5>
+      <ul>
+        <li><a href="cacay-oil.html">Cacay Oil</a></li>
+        <li><a href="cacao-butter.html">Cacao Butter Lipstick</a></li>
+        <li><a href="index.html#products">Essential Kit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Brand</h5>
+      <ul>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="about.html#traceability">Traceability</a></li>
+        <li><a href="cacay-oil.html">Cacay Oil</a></li>
+        <li><a href="about.html#values">Values</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#">Shipping &amp; Returns</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2025 UNCMN. All rights reserved.</p>
+    <span class="slogan">From Soil to Skin. Nothing in Between.</span>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
