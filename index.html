@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="UNCMN — Uncommon. Colombian cacay oil, cacao butter lipsticks and natural lip care. From Soil to Skin. Nothing in Between." />
+  <meta name="description" content="UNCMN — Colombian cacay oil and cacao butter. From Soil to Skin. Nothing in Between." />
   <title>UNCMN — From Soil to Skin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,9 +12,7 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    /* ── HOME-ONLY STYLES ───────────────────────────── */
-
-    /* HERO */
+    /* ── HERO ──────────────────────────────────────── */
     .hero {
       min-height: 100vh;
       display: grid; grid-template-columns: 1fr 1fr;
@@ -22,31 +20,25 @@
     }
     .hero-left {
       display: flex; flex-direction: column; justify-content: center;
-      padding: 5rem 3.5rem 5rem 5rem; position: relative; z-index: 1;
-    }
-    .hero-eyebrow {
-      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.24em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem;
-      opacity: 0; transform: translateY(14px);
-      animation: fadeUp 0.8s var(--ease) 0.2s forwards;
+      padding: 5rem 3.5rem 5rem 5rem;
     }
     .hero-title {
       font-family: var(--font-display); font-size: clamp(3rem, 5.2vw, 5.8rem);
-      font-weight: 300; line-height: 1.04; margin-bottom: 1.6rem;
+      font-weight: 300; line-height: 1.04; margin-bottom: 1.8rem;
       opacity: 0; transform: translateY(22px);
-      animation: fadeUp 0.9s var(--ease) 0.38s forwards;
+      animation: fadeUp 0.9s var(--ease) 0.2s forwards;
     }
     .hero-title em { font-style: italic; color: var(--gold); }
     .hero-sub {
-      font-size: 0.93rem; line-height: 1.85; color: var(--grey-dk);
-      margin-bottom: 3rem;
+      font-size: 0.95rem; line-height: 1.85; color: var(--grey-dk);
+      max-width: 380px; margin-bottom: 3rem;
       opacity: 0; transform: translateY(18px);
-      animation: fadeUp 0.9s var(--ease) 0.54s forwards;
+      animation: fadeUp 0.9s var(--ease) 0.38s forwards;
     }
     .hero-actions {
       display: flex; gap: 1.2rem; align-items: center;
       opacity: 0; transform: translateY(14px);
-      animation: fadeUp 0.9s var(--ease) 0.70s forwards;
+      animation: fadeUp 0.9s var(--ease) 0.54s forwards;
     }
     .hero-right {
       position: relative; overflow: hidden; background: var(--grey);
@@ -61,7 +53,7 @@
     }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(255,255,255,0.1) 0%, transparent 50%);
+      background: linear-gradient(to right, rgba(255,255,255,0.08) 0%, transparent 50%);
     }
     .hero-badge {
       position: absolute; bottom: 2.5rem; left: 2.5rem;
@@ -72,26 +64,91 @@
     .hero-badge p      { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-dk); }
     .hero-badge strong { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; display: block; margin-top: 0.2rem; }
 
-    /* ABOUT STRIP */
-    .about-strip {
-      display: grid; grid-template-columns: 1fr 1fr; min-height: 65vh;
+    /* ── STORY PANEL (full-bleed image + text overlay) ── */
+    .story-panel {
+      position: relative; height: 90vh; overflow: hidden;
+      display: flex; align-items: flex-end;
     }
-    .about-strip-img { overflow: hidden; min-height: 480px; }
-    .about-strip-img img { width: 100%; height: 100%; object-fit: cover; }
-    .about-strip-content {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 6rem 3.5rem;
+    .panel-bg {
+      position: absolute; inset: 0;
     }
-    .about-strip-content .section-title { margin-bottom: 1.6rem; }
-    .about-strip-content .section-body  { margin-bottom: 2.5rem; }
-    .origin-tag {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-      border: 1px solid var(--grey-md); padding: 0.5rem 1rem; color: var(--black);
+    .panel-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 8s ease;
     }
-    .origin-tag::before { content: '🇨🇴'; }
+    .story-panel:hover .panel-bg img { transform: scale(1.04); }
+    .story-panel::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 45%, transparent 72%);
+      pointer-events: none;
+    }
+    .panel-content {
+      position: relative; z-index: 1;
+      width: 100%; padding: 4rem 5rem;
+      display: flex; align-items: flex-end; justify-content: space-between;
+    }
+    .panel-text { max-width: 680px; }
+    .panel-label {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold-lt);
+      display: block; margin-bottom: 1rem;
+    }
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 4.8vw, 5rem);
+      font-weight: 300; line-height: 1.04;
+      color: var(--white); margin-bottom: 1.2rem;
+    }
+    .panel-title em { font-style: italic; color: var(--gold-lt); }
+    .panel-sub {
+      font-size: 0.92rem; line-height: 1.82;
+      color: rgba(255,255,255,0.6); max-width: 460px;
+    }
+    .panel-link {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--white);
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 3px; white-space: nowrap;
+      transition: border-color 0.25s, color 0.25s;
+      align-self: flex-end; margin-bottom: 0.4rem;
+    }
+    .panel-link:hover { border-color: var(--gold-lt); color: var(--gold-lt); }
 
-    /* PRODUCTS CAROUSEL */
+    /* ── STORY SPLIT (dark 50/50) ───────────────────── */
+    .story-split {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 85vh; background: var(--black); color: var(--white);
+      overflow: hidden;
+    }
+    .split-img { overflow: hidden; }
+    .split-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.88; }
+    .split-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 5rem;
+    }
+    .split-content .section-label { color: var(--gold-lt); }
+    .split-content .section-title { color: var(--white); margin: 0.8rem 0 3rem; }
+    .split-stats { border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 3rem; }
+    .split-stat {
+      display: flex; align-items: center; gap: 2.5rem;
+      padding: 1.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-big {
+      font-family: var(--font-display); font-size: 2.6rem; font-weight: 300;
+      color: var(--gold); min-width: 5rem; line-height: 1;
+    }
+    .split-stat span:last-child { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+    .btn-link {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 3px; display: inline-block;
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .btn-link:hover { color: var(--gold-lt); border-color: var(--gold-lt); }
+
+    /* ── PRODUCTS CAROUSEL ──────────────────────────── */
     .products { padding: 7rem 5rem; }
     .products-header {
       display: flex; justify-content: space-between; align-items: center;
@@ -159,83 +216,20 @@
     }
     .product-buy:hover { background: var(--gold); }
 
-    /* KIT IMAGE SPLIT */
-    .product-img--split { display: flex; }
-    .product-img--split img { width: 50%; height: 100%; object-fit: cover; }
-    .product-img--split img + img { border-left: 2px solid var(--white); }
-
-    /* CACAY FEATURE */
-    .cacay-feature {
-      display: grid; grid-template-columns: 1fr 1fr;
-      background: var(--black); color: var(--white); min-height: 80vh;
-      overflow: hidden;
-    }
-    .cacay-feature-img { overflow: hidden; }
-    .cacay-feature-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.82; }
-    .cacay-feature-content {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 7rem 3.5rem;
-    }
-    .cacay-feature-content .section-label { color: var(--gold-lt); }
-    .cacay-feature-content .section-title { color: var(--white); margin-bottom: 1.6rem; }
-    .cacay-feature-content .section-body  { color: rgba(255,255,255,0.5); margin-bottom: 2.5rem; }
-    .cacay-feature-content .btn-outline {
-      border-color: rgba(255,255,255,0.3); color: var(--white);
-      align-self: flex-start;
-    }
-    .cacay-feature-content .btn-outline:hover {
-      background: var(--gold); border-color: var(--gold); color: var(--white);
-    }
-
-    /* VALUES STRIP */
-    .values-strip { padding: 7rem 5rem; background: var(--grey); }
-    .values-strip-header {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center; margin-bottom: 4rem;
-    }
-    .values-header-img { overflow: hidden; height: 320px; }
-    .values-header-img img { width: 100%; height: 100%; object-fit: cover; }
-    .values-strip-header .section-title { margin-top: 0.5rem; }
-    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-    .value-card {
-      background: var(--white); padding: 3rem 2.5rem;
-      transition: background 0.3s var(--ease);
-    }
-    .value-card:hover { background: var(--black); }
-    .value-card:hover .val-num,
-    .value-card:hover h4,
-    .value-card:hover p { color: var(--white); }
-    .value-card:hover .val-num { color: var(--gold); }
-    .val-num {
-      font-family: var(--font-display); font-size: 3rem; font-weight: 300;
-      color: var(--grey-md); line-height: 1; margin-bottom: 1.5rem;
-      transition: color 0.3s var(--ease);
-    }
-    .value-card h4 {
-      font-family: var(--font-display); font-size: 1.35rem; font-weight: 400;
-      margin-bottom: 0.8rem; transition: color 0.3s var(--ease);
-    }
-    .value-card p {
-      font-size: 0.84rem; line-height: 1.78; color: var(--grey-dk);
-      transition: color 0.3s var(--ease);
-    }
-
     /* ── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1100px) {
       .hero               { grid-template-columns: 1fr; }
       .hero-left          { padding: 4rem 3rem; }
       .hero-right         { min-height: 55vw; }
-      .about-strip        { grid-template-columns: 1fr; }
-      .about-strip-content{ padding: 4rem 3rem; }
+      .story-panel        { height: 75vh; }
+      .panel-content      { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 3rem; }
+      .panel-link         { align-self: flex-start; margin-bottom: 0; }
+      .story-split        { grid-template-columns: 1fr; }
+      .split-img          { min-height: 50vw; }
+      .split-content      { padding: 5rem 3rem; }
       .products                { padding: 5rem 3rem; }
       .product-card            { flex: 0 0 calc(50% - 1px); }
       .products-grid.show-all  { grid-template-columns: 1fr 1fr; }
-      .cacay-feature           { grid-template-columns: 1fr; }
-      .cacay-feature-img       { min-height: 50vw; }
-      .cacay-feature-content   { padding: 5rem 3rem; }
-      .values-strip            { padding: 5rem 3rem; }
-      .values-strip-header     { grid-template-columns: 1fr; gap: 2rem; }
-      .values-grid             { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .hero-right              { order: -1; min-height: 70vw; }
@@ -243,12 +237,17 @@
       .hero-badge              { bottom: 1rem; left: 1rem; padding: 0.65rem 1rem; }
       .hero-badge p            { font-size: 0.6rem; }
       .hero-badge strong       { font-size: 0.9rem; }
+      .story-panel             { height: 68vh; }
+      .panel-content           { padding: 2rem 1.5rem; }
+      .panel-title             { font-size: clamp(2rem, 8vw, 3rem); }
+      .panel-sub               { display: none; }
+      .panel-link              { display: none; }
+      .split-content           { padding: 3.5rem 1.5rem; }
       .products                { padding: 4rem 1.5rem; }
       .product-card            { flex: 0 0 100%; }
       .products-grid.show-all  { grid-template-columns: 1fr; }
       .products-header         { flex-direction: column; align-items: flex-start; gap: 1rem; }
       .products-header-right   { width: 100%; justify-content: space-between; }
-      .values-strip            { padding: 4rem 1.5rem; }
     }
   </style>
 </head>
@@ -288,14 +287,11 @@
         From Soil<br>to Skin.<br><em>Nothing</em><br>in Between.
       </h1>
       <p class="hero-sub">
-        We are UNCMN—built on the premise that truth is beauty and beauty is truth. We are a collective of radical purists. As artists devoted to our craft, we create pure, natural skincare to help your absolute version flourish.<br><br>
-        Our mission is to prove the world that a symbiotic business is possible. One where the land, the growers, our products, and our clients all thrive together.<br><br>
-        Absolute coherence is truthful, healthy and beautiful.<br><br>
-        Embrace your true nature. Be uncommon.
+        Pure Colombian skincare from people who grow what we sell. No shortcuts. No synthetics. No compromise.
       </p>
       <div class="hero-actions">
-        <a href="#products" class="btn-primary">Discover</a>
-        <a href="cacay-oil.html" class="btn-ghost">Our Cacay Oil</a>
+        <a href="#products" class="btn-primary">Shop Now</a>
+        <a href="about.html" class="btn-ghost">Our Story</a>
       </div>
     </div>
     <div class="hero-right">
@@ -308,21 +304,115 @@
     </div>
   </section>
 
-  <!-- CACAY FEATURE -->
-  <section class="cacay-feature">
-    <div class="cacay-feature-img">
+  <!-- PANEL 1: CACAY SOURCE -->
+  <section class="story-panel">
+    <div class="panel-bg">
+      <img src="images/cacay_green_fruit.jpg" alt="Cacay fruit growing in Colombia" />
+    </div>
+    <div class="panel-content">
+      <div class="panel-text anim">
+        <span class="panel-label">Cacay Oil</span>
+        <h2 class="panel-title">The most potent oil<br><em>nature</em> has ever made.</h2>
+        <p class="panel-sub">Three times richer in Vitamin E than argan. Twice the retinol of rosehip. Grown in the native forests of Colombia and cold-pressed with nothing added.</p>
+      </div>
+      <a href="cacay-oil.html" class="panel-link anim">Discover Cacay Oil →</a>
+    </div>
+  </section>
+
+  <!-- SPLIT: CACAY SCIENCE -->
+  <section class="story-split">
+    <div class="split-img">
       <img src="images/cacay_oil.png" alt="UNCMN Cacay Oil dropper" />
     </div>
-    <div class="cacay-feature-content">
-      <span class="section-label anim">The Ingredient</span>
+    <div class="split-content">
+      <span class="section-label anim">The Science</span>
       <h2 class="section-title anim anim-delay-1">Why Cacay<br><em>changes</em><br>everything.</h2>
-      <p class="section-body anim anim-delay-2">
-        Cacay oil carries the highest natural concentration of retinol, linolenic acid,
-        and Vitamin E of any known plant oil. Ultra-light, instantly absorbed, zero residue.
-        One of the most potent natural skin care ingredients known — grown in the forests
-        of Colombia, sourced responsibly.
-      </p>
-      <a href="cacay-oil.html" class="btn-outline anim anim-delay-3">Learn the full story</a>
+      <div class="split-stats anim anim-delay-2">
+        <div class="split-stat">
+          <span class="stat-big">3×</span>
+          <span>More Vitamin E than argan oil</span>
+        </div>
+        <div class="split-stat">
+          <span class="stat-big">2×</span>
+          <span>More retinol than rosehip</span>
+        </div>
+        <div class="split-stat">
+          <span class="stat-big">100%</span>
+          <span>Traceable — soil to your skin</span>
+        </div>
+        <div class="split-stat">
+          <span class="stat-big">0</span>
+          <span>Synthetic additives, ever</span>
+        </div>
+      </div>
+      <a href="cacay-oil.html" class="btn-link anim anim-delay-3">The full story →</a>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Cacay Oil</span><span class="dot">·</span>
+      <span>Cacao Butter</span><span class="dot">·</span>
+      <span>Natural Care</span><span class="dot">·</span>
+      <span>Full Traceability</span><span class="dot">·</span>
+      <span>Colombia</span><span class="dot">·</span>
+      <span>Responsibly Sourced</span><span class="dot">·</span>
+      <span>Just Pricing</span><span class="dot">·</span>
+      <span>Earth to Skin</span><span class="dot">·</span>
+      <span>Cacay Oil</span><span class="dot">·</span>
+      <span>Cacao Butter</span><span class="dot">·</span>
+      <span>Natural Care</span><span class="dot">·</span>
+      <span>Full Traceability</span><span class="dot">·</span>
+      <span>Colombia</span><span class="dot">·</span>
+      <span>Responsibly Sourced</span><span class="dot">·</span>
+      <span>Just Pricing</span><span class="dot">·</span>
+      <span>Earth to Skin</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- PANEL 2: CACAO PODS -->
+  <section class="story-panel">
+    <div class="panel-bg">
+      <img src="images/cacao_fruit.jpeg" alt="Cacao pods from Colombia" />
+    </div>
+    <div class="panel-content">
+      <div class="panel-text anim">
+        <span class="panel-label">Cacao Butter</span>
+        <h2 class="panel-title">Ancient nourishment.<br>No petroleum, <em>ever.</em></h2>
+        <p class="panel-sub">Cold-pressed cacao butter from Colombian Theobroma cacao. Penetrates the skin's lipid layer — no occlusive coating, no fossil-fuel derivatives. Pure botany on your lips.</p>
+      </div>
+      <a href="cacao-butter.html" class="panel-link anim">Discover Cacao Butter →</a>
+    </div>
+  </section>
+
+  <!-- PANEL 3: CACAO BUTTER (open pod) -->
+  <section class="story-panel">
+    <div class="panel-bg">
+      <img src="images/cocoa-fruits-open.png" alt="Cacao pod opened revealing seeds and butter" />
+    </div>
+    <div class="panel-content">
+      <div class="panel-text anim">
+        <span class="panel-label">Inside the Pod</span>
+        <h2 class="panel-title">Every cold press.<br><em>Nothing</em> lost.</h2>
+        <p class="panel-sub">From pod to lipstick — every fatty acid, every polyphenol, every antioxidant preserved intact. This is what nature intended, untouched by refining.</p>
+      </div>
+      <a href="cacao-butter.html" class="panel-link anim">The Cacao Story →</a>
+    </div>
+  </section>
+
+  <!-- PANEL 4: COLOMBIA -->
+  <section class="story-panel">
+    <div class="panel-bg">
+      <img src="images/colombia_jungle.jpg" alt="Colombian tropical forest" />
+    </div>
+    <div class="panel-content">
+      <div class="panel-text anim">
+        <span class="panel-label">The Origin</span>
+        <h2 class="panel-title">Colombia's forests<br>don't need <em>improvement.</em></h2>
+        <p class="panel-sub">Colombia's native land produces cacay and cacao of unmatched potency. We work with it — not against it. No monocultures. No extraction. Only deep respect for a land that gives everything.</p>
+      </div>
+      <a href="about.html" class="panel-link anim">Our Story →</a>
     </div>
   </section>
 
@@ -386,7 +476,7 @@
         <a href="https://www.paypal.com/instantcommerce/checkout/AYQ64DPG8Y7TE" class="product-buy" target="_blank" rel="noopener">Buy Now</a>
       </div>
 
-      <div class="product-card product-card--kit anim">
+      <div class="product-card anim">
         <div class="product-img">
           <img src="images/30ml_kit.png" alt="Essential Kit 30ml" />
         </div>
@@ -400,7 +490,7 @@
         <a href="https://www.paypal.com/instantcommerce/checkout/W525VACLCEBGS" class="product-buy" target="_blank" rel="noopener">Buy Now</a>
       </div>
 
-      <div class="product-card product-card--kit anim anim-delay-1">
+      <div class="product-card anim anim-delay-1">
         <div class="product-img">
           <img src="images/50ml_kit.png" alt="Essential Kit 50ml" />
         </div>
@@ -416,96 +506,6 @@
 
     </div>
     </div><!-- /.carousel-viewport -->
-  </section>
-
-  <!-- MARQUEE -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span>Cacay Oil</span><span class="dot">·</span>
-      <span>Cacao Butter</span><span class="dot">·</span>
-      <span>Natural Care</span><span class="dot">·</span>
-      <span>Full Traceability</span><span class="dot">·</span>
-      <span>Colombia</span><span class="dot">·</span>
-      <span>Responsibly Sourced</span><span class="dot">·</span>
-      <span>Just Pricing</span><span class="dot">·</span>
-      <span>Earth to Skin</span><span class="dot">·</span>
-      <span>Cacay Oil</span><span class="dot">·</span>
-      <span>Cacao Butter</span><span class="dot">·</span>
-      <span>Natural Care</span><span class="dot">·</span>
-      <span>Full Traceability</span><span class="dot">·</span>
-      <span>Colombia</span><span class="dot">·</span>
-      <span>Responsibly Sourced</span><span class="dot">·</span>
-      <span>Just Pricing</span><span class="dot">·</span>
-      <span>Earth to Skin</span><span class="dot">·</span>
-    </div>
-  </div>
-
-  <!-- ABOUT STRIP -->
-  <section class="about-strip">
-    <div class="about-strip-img">
-      <img src="images/cacay_trees.webp" alt="Cacay trees in Colombia" />
-    </div>
-    <div class="about-strip-content">
-      <span class="section-label anim">Our Story</span>
-      <h2 class="section-title anim anim-delay-1">Born from<br>the <em>land.</em><br>Built for you.</h2>
-      <p class="section-body anim anim-delay-2">
-        UNCMN was created by people who grow what we sell. Based in Colombia,
-        we work directly with the land and communities that have cultivated
-        cacay and cacao for generations. A lean, transparent supply chain
-        means fair prices for everyone — and respect for every living being
-        along the way.
-      </p>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <div class="stats-row">
-    <div class="stat-cell anim">
-      <div class="stat-num">3<span>×</span></div>
-      <div class="stat-label">More Vitamin E<br>than argan oil</div>
-    </div>
-    <div class="stat-cell anim anim-delay-1">
-      <div class="stat-num">2<span>×</span></div>
-      <div class="stat-label">More retinol than<br>rosehip oil</div>
-    </div>
-    <div class="stat-cell anim anim-delay-2">
-      <div class="stat-num">100<span>%</span></div>
-      <div class="stat-label">Traceable — soil<br>to your hands</div>
-    </div>
-    <div class="stat-cell anim anim-delay-3">
-      <div class="stat-num">0</div>
-      <div class="stat-label">Synthetic additives<br>ever</div>
-    </div>
-  </div>
-
-  <!-- VALUES -->
-  <section class="values-strip" id="values">
-    <div class="values-strip-header">
-      <div class="values-header-text">
-        <span class="section-label anim">What We Stand For</span>
-        <h2 class="section-title anim anim-delay-1">Uncommon <em>principles.</em></h2>
-      </div>
-      <div class="values-header-img anim anim-delay-1">
-        <img src="images/cacay_dried_fruits.webp" alt="Cacay dried fruits" />
-      </div>
-    </div>
-    <div class="values-grid">
-      <div class="value-card anim">
-        <div class="val-num">01</div>
-        <h4>Full Traceability</h4>
-        <p>We know every hand that touched our ingredients and we share that story openly — soil coordinates, harvest dates, producer faces included.</p>
-      </div>
-      <div class="value-card anim anim-delay-1">
-        <div class="val-num">02</div>
-        <h4>Just Pricing</h4>
-        <p>A lean supply chain means more value for farmers, fair prices for customers, and no one left behind. Transparent from the start.</p>
-      </div>
-      <div class="value-card anim anim-delay-2">
-        <div class="val-num">03</div>
-        <h4>Respect for All Beings</h4>
-        <p>Every living being in our supply chain — human, animal, plant — is treated with dignity. We participate and give back, never extract.</p>
-      </div>
-    </div>
   </section>
 
   <!-- NEWSLETTER -->
@@ -547,7 +547,7 @@
     <div class="footer-col">
       <h5>Support</h5>
       <ul>
-        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Shipping &amp; Returns</a></li>
         <li><a href="#">FAQ</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Privacy</a></li>
