@@ -296,6 +296,7 @@ footer {
   .nav-mobile          { display: flex; }
   .stats-row           { grid-template-columns: 1fr 1fr; }
   .stat-cell           { padding: 2rem 1.5rem; }
-  footer               { grid-template-columns: 1fr; padding: 3rem 1.5rem 0; gap: 2.5rem; }
+  footer               { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem 0; gap: 2rem; }
+  .footer-brand        { grid-column: 1 / -1; }
   .footer-bottom       { padding: 1.5rem; }
 }
